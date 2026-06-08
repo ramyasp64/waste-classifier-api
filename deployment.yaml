@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: waste-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: waste-api
+  template:
+    metadata:
+      labels:
+        app: waste-api
+    spec:
+      containers:
+      - name: waste-classifier-api
+        image: waste-classifier-api
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
